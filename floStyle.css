@@ -1,0 +1,104 @@
+html,body{
+margin:0px;
+padding:0px;
+width:100%;
+max-width:100%;
+}
+.header{
+background: yellow;
+min-height: 8%;
+border: solid;
+} 
+.main{
+background: gray;
+min-height: 80%;
+border: solid;
+}
+.main:after {
+content: "";
+display: table;
+clear: both;
+}
+.innerBody{
+display: inline-flex;
+float:left;
+width:100%;
+} 
+.col1{
+background: red;
+float: left;
+width: 75%;
+padding: 5px;
+border: solid;
+} 
+.col2{
+background: green;
+float: left;
+width: 15%;
+min-height:80%;
+padding: 5px;
+border: solid;
+} 
+.instruction{
+background: blue;
+float: left;
+width: 10%;
+padding: 5px;
+border: solid;
+} 
+.footer{
+background: orange;
+min-height: 8%;
+border: solid;
+} 
+.realTimeSearch{
+min-height: 30%;
+border: solid;
+}
+.SearchHistory{
+border: solid; 
+top: 30%;
+bottom: 0;
+height: 50%; 
+clear: both;
+}
+
+
+#snackbar {
+
+	visibility: hidden;
+    min-width: 15%;
+	min-height: 24%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 15px;
+    position: relative;
+    z-index: 1;
+    /* left: 75%; */
+    top: 10%;
+    font-size: 17px;
+}
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+@-webkit-keyframes fadein {
+    from {top: 10%; opacity: 0;} 
+    to {top: 10%; opacity: 1;}
+}
+@keyframes fadein {
+    from {top: 10%; opacity: 0;} 
+    to {top: 10%; opacity: 1;}
+}
+@-webkit-keyframes fadeout {
+    from {top: 10%; opacity: 0;} 
+    to {top: 10%; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {top: 10%; opacity: 1;}
+    to {bottom: 10%; opacity: 0;}
+}

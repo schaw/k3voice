@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+	<title>Flo! Ears for your dashboard </title>
+	<meta name="description" content="Flo is a SpeechRecognition capable dashboard, that lets you control your dashboard using voice commands, & lets you focus on insights instead." />
+	<meta name="keywords" content="Tableau, speech recognition, voice dashboard">
+	<meta name="author" content="Keshav Kritesh">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:image" content="http://schaw.github.io/flo.png"/>
+	<meta property="og:title" content="Flo! SpeechRecognition capable dashboard"/>
+	<meta property="og:url" content="http://schaw.github.io"/>
+	<meta property="og:site_name" content="Flo"/>
+	<!-- <meta property="fb:admins" content="568390229" /> -->
+
+	<script src="annyang.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="responsivevoice.js"></script> 
+	<script src="https://public.tableausoftware.com/javascripts/api/tableau-2.min.js " type="text/javascript"></script> 
+	<link rel="stylesheet" type="text/css" href="floStyle.css">
+	<script src="floCode.js"></script>
+</head>
+<body class="disableEvent" >
+	<div class="header">  
+	Header
+	</div>
+	<div class="main">  
+		<div class="innerBody">
+			<div class="col1" >
+				<section id='tableauViz'>
+				<!--Dashboard-->
+				</section>			
+			</div>
+			<div class="col2">	
+				<div class="realTimeSearch">
+				Go ahead! Say something!
+					<div id="snackbar">
+					Some text some message..
+					</div>
+				</div>
+				<div class="SearchHistory" id="SearchHistory">
+					<ul>
+					Search History
+					</ul>
+				</div>
+			</div>
+			<div class="instruction">
+			Instruction
+				<button onclick="showSnackbar()">
+				Show Snackbar
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="footer">  
+	footer
+	</div>
+</body>
+</html>
