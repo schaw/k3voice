@@ -1,19 +1,3 @@
-$(document).ready(function() {
-	initializeViz();
-	$(document).keydown(function(event) { 
-		var pressedKey = String.fromCharCode(event.keyCode).toLowerCase();
-		if (event.ctrlKey && (pressedKey == "c" || pressedKey == "u")) {
-			return false; 
-		}
-	});
-	$(".disableEvent").on("contextmenu",function(){
-		return false;
-	}); 
-	$('.disableEvent').bind('cut copy paste', function (e) {
-		e.preventDefault();
-	});
-});
-
 var viz, workbook, activeSheet, Worksheet, worksheet;
 function initializeViz(){
 	var placeholderDiv = document.getElementById("tableauViz");
@@ -30,6 +14,24 @@ function initializeViz(){
 	};
 	viz = new tableauSoftware.Viz(placeholderDiv, url, options);
 }
+$(document).ready(function() {
+	initializeViz();
+	$(document).keydown(function(event) { 
+		var pressedKey = String.fromCharCode(event.keyCode).toLowerCase();
+		if (event.ctrlKey && (pressedKey == "c" || pressedKey == "u")) {
+			return false; 
+		}
+	});
+	$(".disableEvent").on("contextmenu",function(){
+		return false;
+	}); 
+	$('.disableEvent').bind('cut copy paste', function (e) {
+		e.preventDefault();
+	});
+});
+function floSays(str){
+	responsiveVoice.speak(str);
+}
 floSays('Welcome to Flow');
 function toPascalCase(str){
 	var newStr = str.toLowerCase().replace(/\b[a-z]/g, function(txtVal) {
@@ -38,12 +40,14 @@ function toPascalCase(str){
 }
 function addToHistory(prefix, str){
 	$("<span><li>"+prefix+"&nbsp;"+str+"</li></span>").appendTo("#SearchHistory ul");
-	//$("<span><li>"+prefix+"&nbsp;"+str+"</li></span>").appendTo("#SearchHistory ul");
 	$("#snackbar").html("We heard "+str);
 	showSnackbar();
 }
-function floSays(str){
-	responsiveVoice.speak(str);
+
+function showSnackbar() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
 if (annyang) {
@@ -128,10 +132,4 @@ else {
 	$(document).ready(function() {
 		$('#unsupported').fadeIn('fast');
 	});
-}
-function showSnackbar() {
-    var x = document.getElementById("snackbar");
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-	//$("#snackbar").empty();
 }
