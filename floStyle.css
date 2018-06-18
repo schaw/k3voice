@@ -1,8 +1,14 @@
+html {
+  box-sizing: border-box;
+}
 html,body{
 margin:0px;
 padding:0px;
 width:100%;
 max-width:100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 .header{
 background: yellow;
@@ -61,6 +67,7 @@ top: 30%;
 bottom: 0;
 height: 50%; 
 clear: both;
+overflow: auto;
 }
 
 
