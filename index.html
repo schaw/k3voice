@@ -17,10 +17,11 @@
 	<script type="text/javascript"  src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 	<script src="floCode.js" type="text/javascript"></script>
 	<link rel="stylesheet" type="text/css" href="floStyle.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Archivo+Narrow|Chela+One|Josefin+Sans|Open+Sans+Condensed:300|Roboto+Condensed" rel="stylesheet">
 </head>
 <body class="disableEvent" >
 	<div class="header">  
-	Header
+	Flo! Ears for your Dashboard
 	</div>
 	<div class="main">  
 		<div class="innerBody">
@@ -31,27 +32,40 @@
 			</div>
 			<div class="col2">	
 				<div class="realTimeSearch">
-				Go ahead! Say something!
+				<center> Go ahead! Say something!</center>
 					<div id="snackbar">
 					Some text some message..
 					</div>
 				</div>
 				<div class="SearchHistory" id="SearchHistory">
 					<ul>
-					Search History
+					<u>Search History</u>
 					</ul>
 				</div>
 			</div>
 			<div class="instruction">
-			Instruction
-				<button onclick="showSnackbar()">
+				<ol>
+				<u>Instructions</u>
+					<li> To Highlight a studio, Say "Select <i> Paramount</i>"
+					<li> To Add more studios to highlight, Say "Add to Selection <i> Universal</i>"
+					<li> To unselect a highlighted studio, Say "Unselect <i> Paramount</i>"
+					<li> To clear all higlights, Say "Clear Selection"
+					<li> To Filter a Genre by value, Say "Filter <i> Action</i>"
+					<li> To Add more Genres to Filter, Say "Add Filter <i> Drama</i>"
+					<li> To Remove an item from Filter, Say "Remove <i> Action</i>"
+					<!-- <li> To Clear Filter, Say "Clear Filter <i> Type</i>" -->
+					<li> To Reset the entire Dashboard, Say "Start Over" or "Reset"
+					<li> To Export the dashboard as PDF, Say "Export to PDF"
+					<li> To Export the dashboard as Image, Say "Export to Image"			
+				</ol>				
+				<!-- <button onclick="showSnackbar()">
 				Show Snackbar
-				</button>
+				</button> -->
 			</div>
 		</div>
 	</div>
 	<div class="footer">  
-	footer
+		&copy; 2018. Fractal Analytics Pvt Ltd. 
 	</div>
 </body>
 </html>
