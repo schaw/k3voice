@@ -11,12 +11,12 @@ max-width:100%;
   box-sizing: inherit;
 }
 .header{
-background: yellow;
+background: #F3D459;
 min-height: 8%;
 border: solid;
 } 
 .main{
-background: gray;
+background: #E2E3E3;
 min-height: 80%;
 border: solid;
 }
@@ -31,14 +31,14 @@ float:left;
 width:100%;
 } 
 .col1{
-background: red;
+background: #EFBCC0;
 float: left;
 width: 75%;
 padding: 5px;
 border: solid;
 } 
 .col2{
-background: green;
+background: #BFE0C5;
 float: left;
 width: 15%;
 min-height:80%;
@@ -46,14 +46,14 @@ padding: 5px;
 border: solid;
 } 
 .instruction{
-background: blue;
+background: #B2CDE5;
 float: left;
 width: 10%;
 padding: 5px;
 border: solid;
 } 
 .footer{
-background: orange;
+background: #ED6335;
 min-height: 8%;
 border: solid;
 } 
