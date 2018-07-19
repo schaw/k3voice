@@ -97,12 +97,12 @@ if (annyang) {
 		activeSheet.getWorksheets()[1].clearFilterAsync(new_tag);
 	};
 	var exportPDF = function() {
-		addToHistory("","Export PDF Heard");
+		addToHistory("","Heard Export PDF");
 		viz.showExportPDFDialog();
 		responsiveVoice.speak('Exporting this dashboard as PDF');
 	};
 	var exportImage = function() {
-		addToHistory("","Export PDF Heard");
+		addToHistory("","Heard Export Image");
 		viz.showExportImageDialog();
 		responsiveVoice.speak('Exporting this dashboard as Image');
 	};
