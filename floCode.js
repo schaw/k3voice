@@ -56,17 +56,17 @@ if (annyang) {
 		}
 	var selectStudio =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		activeSheet.getWorksheets()[1].selectMarksAsync('Lead Studio', new_tag, 'REPLACE'); 
 	};
 	var unSelectStudio =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		activeSheet.getWorksheets()[1].selectMarksAsync('Lead Studio', new_tag, 'REMOVE'); 
 	};
 	var addSelectStudio =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		activeSheet.getWorksheets()[1].selectMarksAsync('Lead Studio', new_tag, 'ADD'); 
 	};
 	var clearSelect =  function() {
@@ -75,36 +75,34 @@ if (annyang) {
 
 	var filterGenre =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		activeSheet.getWorksheets()[1].applyFilterAsync("Genre", new_tag, 'REPLACE'); 
 	};
 	var addFilterGenre =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		activeSheet.getWorksheets()[1].applyFilterAsync("Genre", new_tag, 'ADD'); 
 	};
 	var removeFilterGenre =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		activeSheet.getWorksheets()[1].applyFilterAsync("Genre", new_tag, 'REMOVE');
 	};
 	var clearFilterGenre =  function(tag) {
 		var new_tag = toPascalCase(tag);
-		addToHistory("-",new_tag);
+		addToHistory("",new_tag);
 		if(new_tag == "Type"){
 			new_tag = "Genre";
 		}
 		activeSheet.getWorksheets()[1].clearFilterAsync(new_tag);
 	};
 	var exportPDF = function() {
-		var new_tag = toPascalCase(tag);
-		addToHistory("-","Export PDF Heard");
+		addToHistory("","Export PDF Heard");
 		viz.showExportPDFDialog();
 		responsiveVoice.speak('Exporting this dashboard as PDF');
 	};
 	var exportImage = function() {
-		var new_tag = toPascalCase(tag);
-		addToHistory("-","Export PDF Heard");
+		addToHistory("","Export PDF Heard");
 		viz.showExportImageDialog();
 		responsiveVoice.speak('Exporting this dashboard as Image');
 	};
