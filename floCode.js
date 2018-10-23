@@ -29,6 +29,7 @@ $(document).ready(function() {
 		e.preventDefault();
 	});
 });
+
 function floSays(str){
 	responsiveVoice.speak(str);
 }
@@ -43,11 +44,39 @@ function addToHistory(prefix, str){
 	$("#snackbar").html("We heard "+str);
 	showSnackbar();
 }
+function showAlert(alertText){
+	document.getElementById("dialog").innerHTML = alertText;
+	//$(function() {
+		$( "#dialog" ).dialog({
+			open: function(event, ui){
+				setTimeout("$('#dialog').dialog('close')",4000);
+			}
+        });
+	//});
+}
 
 function showSnackbar() {
     var x = document.getElementById("snackbar");
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+//functions to switch between sheets
+function switchToSheetUsingIndexOrName(newSheetIndexOrName){
+	try {
+	workbook.activateSheetAsync(newSheetIndexOrName);
+	}
+	catch(err){
+		console.log("-------------");
+		console.log(err);
+		console.log("-------------");
+		//alert("Cannot switch sheets at the  moment!");	
+		showAlert("Sorry. I can't perform the requested action");
+		// You can make the above alert more decriptive by saying that its the last sheet or the first sheet or No such sheet.
+	}
+	/** Exception to be dealt with
+	Exception$ {_message: "Hidden worksheets do not have a URL.", _innerException: null, _error: Error
+    at new Exception$ (https://public.tableau.com/javascripts/api/tableau-2.2.2.min.js:4:30273…, tableauSoftwareErrorCode: "noUrlForHiddenWorksheet"}
+	**/
 }
 
 if (annyang) {
@@ -106,6 +135,17 @@ if (annyang) {
 		viz.showExportImageDialog();
 		responsiveVoice.speak('Exporting this dashboard as Image');
 	};
+	var switchTo = function(tag) {
+		var currSheetIndex = workbook.getActiveSheet().getIndex();
+		var new_tag = toPascalCase(tag);
+		addToHistory("",new_tag);
+		if (new_tag == "Next")
+			switchToSheetUsingIndexOrName(currSheetIndex + 1);
+		else if (new_tag == "Previous")
+			switchToSheetUsingIndexOrName(currSheetIndex - 1);
+		else		
+			switchToSheetUsingIndexOrName(new_tag);	
+	}
 
 	var commands = {
 	'select *search' : selectStudio,
@@ -119,7 +159,14 @@ if (annyang) {
 	'export to PDF' : exportPDF,
 	'export to image' : exportImage,
 	'start over': startOver,
-	'Reset': startOver    
+	'Reset': startOver,    
+	//switching sheets expecting that input can be one of the following: 1.Next 2.Previous 3.A Sheet Name
+	'show *moveDirectionOrName' : switchTo,
+	'go to *moveDirectionOrName' : switchTo,
+	'switch to *moveDirectionOrName' : switchTo,
+	'go *moveDirectionOrName' : switchTo,
+	'switch *moveDirectionOrName' : switchTo
+	
 	};
 	annyang.debug();
 	annyang.addCommands(commands);

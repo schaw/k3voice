@@ -37,7 +37,7 @@ width:100%;
 .col1{
 background: #F1E9C1; /*#EFBCC0;*/
 float: left;
-width: 73%; /*75%*/
+width: 70%; /*75%*/
 padding: 5px;
 border: solid;
 } 
@@ -52,12 +52,15 @@ border: solid;
 .instruction{
 background: #B2CDE5;
 float: left;
-width: 17%;
+width: 20%;
 padding: 0px;
 padding-top: 0px;
 border: solid;
 font-family: 'Open Sans Condensed', sans-serif;
 overflow: auto;
+clear: both;
+max-height:83%;
+
 /* height: 82%;  */
 /* padding-bottom: 5px; */
 /* bottom: 0; */
@@ -67,14 +70,12 @@ font-family: 'Archivo Narrow', sans-serif;
 padding-left: 30px;
 padding-top: 0px;
 font-size: 20px;
-overflow: auto;
 }
 .instruction ol li{
 font-family: 'Archivo Narrow', sans-serif;
 /* padding-left: 20px; */
 padding-top: 5px;
 font-size: 14px;
-/* overflow: auto; */
 } 
 .footer{
 background: #E5D68B;/*#ED6335;*/
