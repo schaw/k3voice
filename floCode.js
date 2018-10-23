@@ -74,8 +74,8 @@ function switchToSheetUsingIndexOrName(newSheetIndexOrName){
 		// You can make the above alert more decriptive by saying that its the last sheet or the first sheet or No such sheet.
 	}
 	/** Exception to be dealt with
-	Exception$ {_message: "Hidden worksheets do not have a URL.", _innerException: null, _error: Error
-    at new Exception$ (https://public.tableau.com/javascripts/api/tableau-2.2.2.min.js:4:30273…, tableauSoftwareErrorCode: "noUrlForHiddenWorksheet"}
+			Exception$ {_message: "Hidden worksheets do not have a URL.", _innerException: null, _error: Error
+			at new Exception$ (https://public.tableau.com/javascripts/api/tableau-2.2.2.min.js:4:30273…, tableauSoftwareErrorCode: "noUrlForHiddenWorksheet"}
 	**/
 }
 
