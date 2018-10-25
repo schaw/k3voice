@@ -146,6 +146,70 @@ if (annyang) {
 		else		
 			switchToSheetUsingIndexOrName(new_tag);	
 	}
+	var switchToCreateViz = function(tag) {
+		addToHistory("","Opening Blank Slate");
+		switchToSheetUsingIndexOrName("Create View");	
+	}
+	var putFactAndDim = function(tag) {
+		var new_tag = toPascalCase(tag);
+		if(workbook.getActiveSheet().getName() != "Create View"){
+			console.log("Not the right page for the command");
+			showAlert("This page does not support the command");
+			return; //continue;
+		}
+		//Get Dimensions and Metrics
+		var dim = '';
+		var fact = '';
+		var i = 0;
+		var dimAndFactPresent = false;
+		for(; i <= new_tag.length;i++){
+			var tempCheck = new_tag[i]+new_tag[i+1]+new_tag[i+2]+new_tag[i+3];
+			if (tempCheck == ' By '){
+				dimAndFactPresent = true;
+				break;
+			}
+		}
+		if (dimAndFactPresent){
+			var fact = new_tag.substring(0,i).trim();
+			var dim = new_tag.substring(i+4,new_tag.length).trim();
+			addToHistory("", dim+" vs. "+fact);
+			//activeSheet = workbook.getActiveSheet();
+			workbook.changeParameterValueAsync('Dimensions',dim).then(function(t) {
+				workbook.changeParameterValueAsync('Metrics',fact);
+			});
+		}
+		else {
+			addToHistory("", new_tag);
+			workbook.changeParameterValueAsync('Dimensions',new_tag).otherwise(function(){
+				workbook.changeParameterValueAsync('Metrics',new_tag).otherwise(function(err){
+					showAlert("Cannot process desired visual.\n Error: "+err);
+				});
+			});
+		}
+		// console.log("")
+	}
+	var putColor = function(tag) {
+		var new_tag = toPascalCase(tag);
+		if(workbook.getActiveSheet().getName() != "Create View"){
+			console.log("Not the right page for the command");
+			showAlert("This page does not support the command");
+			return; //continue;
+		}
+		workbook.changeParameterValueAsync('Color by',new_tag).otherwise(function(err){
+			showAlert("Cannot add the color.\n Error: "+err);
+		});
+	}
+	var removeColor = function() {
+		//workbook = viz.getWorkbook();
+		if(workbook.getActiveSheet().getName() != "Create View"){
+			console.log("Not the right page for the command");
+			showAlert("This page does not support the command");
+			return; //continue;
+		}
+		workbook.changeParameterValueAsync('Color by','None').otherwise(function(err){
+			showAlert("Cannot remove the color.\n Error: "+err);
+		});
+	}
 
 	var commands = {
 	'select *search' : selectStudio,
@@ -154,19 +218,23 @@ if (annyang) {
 	'clear selection' : clearSelect,
 	'filter *genre' : filterGenre,
 	'add filter *genre' : addFilterGenre,
-	'remove *genre' : removeFilterGenre,
+	'remove filter *genre' : removeFilterGenre,
 	'clear filter *filtername' : clearFilterGenre,//
 	'export to PDF' : exportPDF,
 	'export to image' : exportImage,
 	'start over': startOver,
 	'Reset': startOver,    
 	//switching sheets expecting that input can be one of the following: 1.Next 2.Previous 3.A Sheet Name
-	'show *moveDirectionOrName' : switchTo,
-	'go to *moveDirectionOrName' : switchTo,
-	'switch to *moveDirectionOrName' : switchTo,
-	'go *moveDirectionOrName' : switchTo,
-	'switch *moveDirectionOrName' : switchTo
-	
+	//'show *moveDirectionOrName' : switchTo,
+	'switch (to) *moveDirectionOrName' : switchTo,
+	'go (to) *moveDirectionOrName' : switchTo,
+	'create (new) *ViewOrViz' : switchToCreateViz,
+	'show *DimensionVsMetric': putFactAndDim,
+	'plot *DimensionVsMetric': putFactAndDim,
+	'(add) color (using)(by) *colorDimension': putColor,
+	'(add) colour (using)(by) *colorDimension': putColor,
+	'remove color': removeColor,
+	'remove colour': removeColor
 	};
 	annyang.debug();
 	annyang.addCommands(commands);
